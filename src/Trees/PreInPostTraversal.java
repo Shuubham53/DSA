@@ -1,5 +1,7 @@
 package Trees;
 
+import java.util.ArrayList;
+
 public class PreInPostTraversal {
     public static class Node{
         int val;
@@ -23,13 +25,12 @@ public class PreInPostTraversal {
         System.out.print(root.val+" ");
         inorderTraversal(root.right);
     }
-    public static void  postorderTraversal(Node root){
-        if(root == null) return;
+    public static void  postorderTraversal(Node root) {
+        if (root == null) return;
         inorderTraversal(root.left);
         inorderTraversal(root.right);
-        System.out.print(root.val+" ");
+        System.out.print(root.val + " ");
     }
-
 
 
     public static void main(String[] args) {
@@ -52,6 +53,7 @@ public class PreInPostTraversal {
         System.out.println();
         System.out.print("post order: ");
         postorderTraversal(root);
+
 
 
 
