@@ -1,6 +1,7 @@
 package LinkedList;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class NextGreaterNode {
     public static class Node {
@@ -10,6 +11,25 @@ public class NextGreaterNode {
             this.val = val;
         }
     }
+    // optimal approch
+    public int[] nextLargerNodes2(Node head) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Node curr = head;
+        while( curr != null){
+            list.add(curr.val);
+            curr = curr.next;
+        }
+        Stack<Integer> st = new Stack<>();
+        int[] ans = new int[list.size()];
+        for(int i= list.size()-1; i>=0; i--){
+            while(!st.isEmpty() && list.get(i) >= st.peek()) st.pop();
+            if(st.isEmpty()) ans[i] = 0;
+            else ans[i] = st.peek();
+            st.push(list.get(i));
+        }
+        return ans;
+    }
+    // brute force
     public static int[] nextLargerNodes(Node head) {
         ArrayList<Integer> list = new ArrayList<>();
         Node curr = head;
