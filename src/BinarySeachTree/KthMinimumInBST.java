@@ -15,6 +15,23 @@ public class KthMinimumInBST {
             this.val = val;
         }
     }
+    //optimal approch
+    public void inorder(Node root,int[] ans){
+        if(root == null) return;
+        inorder(root.left,ans);
+        ans[0]--;
+        if(ans[0] == 0) ans[1] = root.val;
+        inorder(root.right,ans);
+    }
+    public int kthSmallest2(Node root, int k) {
+        if(root == null) return -1;
+        int[] ans = new int[2];
+        ans[0] = k;
+        ans[1] = -1;
+        inorder(root,ans);
+        return ans[1];
+    }
+
     public static void inorder(Node root, ArrayList<Integer> list){
         if(root == null) return;
         inorder(root.left,list);
