@@ -1,5 +1,7 @@
 package Trees;
 
+import BinarySeachTree.ConvertToGreaterTree;
+
 import java.util.ArrayList;
 
 public class PreInPostTraversal {
@@ -18,6 +20,12 @@ public class PreInPostTraversal {
         System.out.print(root.val+" ");
         preorderTraversal(root.left);
         preorderTraversal(root.right);
+    }
+    public static void reverseInorder(Node root){
+        if(root == null) return;
+        reverseInorder(root.right);
+        System.out.print(root.val+" ");
+        reverseInorder(root.left);
     }
     public static void  inorderTraversal(Node root){
         if(root == null) return;
