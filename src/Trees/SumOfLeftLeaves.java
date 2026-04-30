@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-// traverse from bottom to up
 public class SumOfLeftLeaves {
     public static class Node{
         int val;
@@ -16,6 +15,21 @@ public class SumOfLeftLeaves {
         public Node(int val){
             this.val = val;
         }
+    }
+
+    // optimal
+    public int sumOfLeftLeaves2(Node root) {
+        if(root == null) return 0;
+        int sum = 0;
+
+        if(root.left != null){
+            if(root.left.left == null && root.left.right == null){
+                sum += root.left.val;
+            }
+            else sum += sumOfLeftLeaves2(root.left);
+        }
+        sum += sumOfLeftLeaves2(root.right);
+        return sum;
     }
     public int sumOfLeftLeaves(Node root) {
         Queue<Node> q = new ArrayDeque<>();
