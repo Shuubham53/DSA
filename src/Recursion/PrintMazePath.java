@@ -1,4 +1,4 @@
-package Backtracking;
+package Recursion;
 
 public class PrintMazePath {
     public static void main(String[] args) {
